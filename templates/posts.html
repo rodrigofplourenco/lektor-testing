@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ this.title }}{% endblock %}
+
+{% block body %}
+  <h2>{{ this.title }}</h2>
+  
+  <div class="posts">
+    {% for key, value in bag('posts').items()|reverse %}
+      {% set post = value.split(', ') %}
+
+      <div class="post">
+        <img src="{{ post[3] }}">
+
+        <div class="post-content">
+          <p class="desc">{{ post[0] }}</p>
+          <p class="author">{{ post[2] }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
